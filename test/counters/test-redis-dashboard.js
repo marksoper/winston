@@ -1,4 +1,7 @@
 
-var rc = require("redis").createClient();
+var redis = require("redis");
+var rc = redis.createClient();
 
-rc.get("allprop||alltime", redis.print);
+rc.get("allprops||alltime", function(err,reply) {
+  console.log("Global Total:  " + reply); 
+});
