@@ -6,11 +6,10 @@ var http = require('http'),
 		helper = require('./helper');
 
 // using development fork of winston for now
-//require.paths.unshift(path.join(__dirname, '../../..', ''));
-var winston = require('../../winston/lib/winston');
+var winston = require('../../lib/winston');
 
 // construct winston transport(s) and counter(s)
-var	configFile = path.join(__dirname, './config/', 'redis-test-config.json'),
+var	configFile = path.join(__dirname, './config/', 'test-redis-config.json'),
     config = JSON.parse(fs.readFileSync(configFile).toString()),
 		transports = helper.getTransports(config),
 		counters = helper.getCounters(config);
@@ -52,16 +51,16 @@ exports.createServer = function (port) {
 };
 
 exports.start = function(options, callback) {
-  var server = exports.createServer(options.collector_port);
+  var server = exports.createServer(options.port);
   callback(null, server);
 };
 
-var config = {'collector_port' : 8000};
+var config = {'port' : 8000};
 
 exports.start(config, function (err, server) {
   if (err) {
     return sys.puts('Error starting analog example server: ' + err.message);
   }
-  sys.puts('analog example server listening on http://127.0.0.1:' + config.collector_port);
+  sys.puts('analog example server listening on http://127.0.0.1:' + config.port);
 });
 
