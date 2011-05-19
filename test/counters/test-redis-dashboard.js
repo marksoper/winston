@@ -1,5 +1,7 @@
 
-var redis = require("redis");
+var redis = require("redis"),
+    path = require("path"),
+    fs = require("fs");
 var rc = redis.createClient();
 
 rc.get("allprops||alltime", function(err,reply) {
