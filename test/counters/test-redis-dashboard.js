@@ -23,6 +23,5 @@ var counts = counter.count(false,false,false,false, function(results) {
 	for (attr in results) {
 	    console.log("RESULTS: " + attr + " :: " + results[attr]);
 	}
+	return;
     });
-
-console.log('done');
