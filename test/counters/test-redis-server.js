@@ -8,6 +8,10 @@ var http = require('http'),
 // using development fork of winston for now
 var winston = require('../../lib/winston');
 
+// analog not yet on npm - obtain from https://github.com/marksoper/analog
+var analog = require('../../../analog/lib/analog')
+
+
 // construct winston transport(s) and counter(s)
 var	configFile = path.join(__dirname, './config/', 'test-redis-config.json'),
     config = JSON.parse(fs.readFileSync(configFile).toString()),
@@ -20,7 +24,7 @@ var logger = new (winston.Logger)({
 		});
 		
 // use an instrument to build log metadata from request object
-var instrument = new (winston.instruments.Analog)();
+var analog = new (analog.Analog)();
 
 
 exports.createServer = function (port) {
@@ -37,7 +41,7 @@ exports.createServer = function (port) {
 		  var response_body = "response body goes here";
 			response.writeHead(200);
 		  response.end(response_body);
-			logger.log("info","log message payload",instrument.transform(request, response, response_body));
+			logger.log("info","log message payload",analog.transform(request, response, response_body));
     });
 
 	});
