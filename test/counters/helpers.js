@@ -1,9 +1,9 @@
 
 
-var helper = exports;
+var helpers = exports;
 var winston = require("../../lib/winston");
 
-helper.getTransports = function(config) {
+helpers.getTransports = function(config) {
 	//
 	// creates winston Transports for each transport in config file
 	//
@@ -28,7 +28,7 @@ helper.getTransports = function(config) {
 };
 
 
-helper.getCounters = function(config) {
+helpers.getCounters = function(config) {
 	//
 	// creates winston Counters for each counter in config file
 	//

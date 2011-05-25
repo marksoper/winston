@@ -3,7 +3,7 @@ var http = require('http'),
     fs = require('fs'),
 		sys = require('sys'),
     path = require('path'),
-		helper = require('./helper');
+		helpers = require('./helpers');
 
 // using development fork of winston for now
 var winston = require('../../lib/winston');
@@ -15,8 +15,8 @@ var analog = require('../../../analog/lib/analog')
 // construct winston transport(s) and counter(s)
 var	configFile = path.join(__dirname, './config/', 'test-redis-config.json'),
     config = JSON.parse(fs.readFileSync(configFile).toString()),
-		transports = helper.getTransports(config),
-		counters = helper.getCounters(config);
+		transports = helpers.getTransports(config),
+		counters = helpers.getCounters(config);
 		
 var logger = new (winston.Logger)({
 		transports: transports,
