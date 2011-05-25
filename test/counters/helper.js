@@ -34,6 +34,7 @@ helper.getCounters = function(config) {
 	//
 	counters = [];
 	for (counter_type in config["counters"]) {
+
 	  switch(counter_type) {
 	    case "redis":
 		    counters.push(new (winston.counters.Redis)(config["counters"].redis));

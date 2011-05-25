@@ -16,8 +16,7 @@ var winston = require('../../lib/winston');
 
 var	configFile = path.join(__dirname, './config/', 'test-redis-config.json'),
     config = JSON.parse(fs.readFileSync(configFile).toString()),
-    counter = new (winston.counters.Redis)(rc,config["counters"].redis);
-    counter.createClient();
+    counter = new (winston.counters.Redis)(config["counters"].redis,rc);
 		
 var counts = counter.count(false,false,false,false, function(results) {
 	for (attr in results) {
