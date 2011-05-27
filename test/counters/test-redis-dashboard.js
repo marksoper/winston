@@ -19,6 +19,8 @@ var	configFile = path.join(__dirname, './config/', 'test-redis-config.json'),
     counter = new (winston.counters.Redis)(config["counters"].redis,rc),
     properties = config["counters"].redis["properties"];
 		
+console.log(properties);
+
 var counts = counter.count(false,false,false,properties, function(results) {
 	for (attr in results) {
 	    console.log("RESULTS: " + attr + " :: " + results[attr]);
