@@ -2,7 +2,9 @@
 
 var redis = require("redis"),
     path = require("path"),
-    fs = require("fs");
+    fs = require("fs"),
+    events = require('events');
+
 var rc = redis.createClient();
 
 
@@ -29,3 +31,9 @@ var counts = counter.count(false,false,false,properties, function(results) {
 	counter.quitClient();
 	return;
     });
+
+
+counter.addListener('increment', function(propkey, propval, timekey, timeval) {
+	console.log(propkey + "  :  " + propval + "    ;;    " + timekey + "  :  " + timeval);
+});
+
