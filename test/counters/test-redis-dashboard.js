@@ -16,13 +16,13 @@ var	configFile = path.join(__dirname, './config/', 'test-redis-config.json'),
 		
 
 
-var counts = counter.count(false,false,false,properties, function(results) {
-	for (attr in results) {
-	    console.log("RESULTS: " + attr + " :: " + results[attr]);
-	}
+//var counts = counter.count(false,false,false,properties, function(results) {
+//	for (attr in results) {
+//	    console.log("RESULTS: " + attr + " :: " + results[attr]);
+//	}
 	//counter.quitClient();
-	return;
-    });
+//	return;
+//    });
 
 
 counter.addListener('increment', function(propkey, propval, timekey, timeval) {
