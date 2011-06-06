@@ -5,9 +5,6 @@ var redis = require("redis"),
     fs = require("fs"),
     events = require('events');
 
-var rc = redis.createClient();
-
-
 
 rc.get("allprops||alltime", function(err,reply) {
   console.log("Global Total:  " + reply); 
@@ -19,7 +16,7 @@ var winston = require('../../lib/winston');
 
 var	configFile = path.join(__dirname, './config/', 'test-redis-config.json'),
     config = JSON.parse(fs.readFileSync(configFile).toString()),
-    counter = new (winston.counters.Redis)(config["counters"].redis,rc),
+    counter = new (winston.counters.Redis)(config["counters"].redis),
     properties = config["counters"].redis["properties"];
 		
 console.log(properties);
